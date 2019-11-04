@@ -1,0 +1,25 @@
+h1 Listing stores
+
+table
+  thead
+    tr
+      th Codename
+      th Address
+      th Phone
+      th
+      th
+      th
+
+  tbody
+    - @stores.each do |store|
+      tr
+        td = store.codename
+        td = store.address
+        td = store.phone
+        td = link_to 'Show', store
+        td = link_to 'Edit', edit_store_path(store)
+        td = link_to 'Destroy', store, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Store', new_store_path

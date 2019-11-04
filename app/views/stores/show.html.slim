@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Codename:
+  = @store.codename
+p
+  strong Address:
+  = @store.address
+p
+  strong Phone:
+  = @store.phone
+
+=> link_to 'Edit', edit_store_path(@store)
+'|
+=< link_to 'Back', stores_path

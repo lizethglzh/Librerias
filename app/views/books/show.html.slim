@@ -1,0 +1,22 @@
+p#notice = notice
+
+p
+  strong Title:
+  = @book.title
+p
+  strong Author:
+  = @book.author
+p
+  strong Year:
+  = @book.year
+p
+  strong Quantity:
+  = @book.quantity
+p
+  strong Price:
+  = @book.price
+
+
+        => link_to 'Edit', edit_book_path(@book)
+        '|
+        =< link_to 'Back', books_path

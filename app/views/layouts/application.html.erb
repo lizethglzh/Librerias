@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Librerias con libros</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-light" style="background-color: #d3d3d3;">
+      <a class="navbar-brand" href="#">
+      <img src="Desktop/book.png" width="30" height="30" class="d-inline-block align-top" alt="">
+  </a>
+
+      <div class="container">
+
+        <div class="navbar-header">
+
+          <%=link_to "Books", root_path, class: "navbar-brand" %>
+        </div>
+        <ul class="nav navbar-nav">
+       <% if user_signed_in? %>
+        <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+        <li><%= link_to "Log in", new_user_registration_path %></li>
+        <% end %>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+        <li><%= link_to "New Book", new_book_path %></li>
+        <% end %>
+      </div>
+    </nav>
+
+
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <% if user_signed_in? %>
+    <%= link_to 'Cerrar sesion', destroy_user_session_path, method: :delete %>
+    <%= link_to 'Usuarios', users_path %>
+    <%= link_to 'Libros', books_path %>
+    <% end %>
+
+    <form class="form-inline my-2 my-lg-0" action="search">
+      <input class="form-control mr-sm-2" name="q" type="text" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+    
+    <%= yield %>
+
+  </body>
+</html>

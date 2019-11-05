@@ -1,7 +1,12 @@
 h1 LIBRERIA 
 
+= form_tag books_path, :method => 'get' do
+  = text_field_tag :search, params[:search]
+  = submit_tag "Search"
+
 table
   thead
+    p.text-center
     tr
       th Title
       th Author
@@ -15,6 +20,7 @@ table
   tbody
     - @books.each do |book|
       tr
+        p.text-center
         td = book.title
         td = book.author
         td = book.year

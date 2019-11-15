@@ -17,7 +17,6 @@ class StoresController < ApplicationController
   # GET /stores/new
   def new
     @store = Store.new
-    @stores = Publisher.stores.build
   end
 
   # GET /stores/1/edit

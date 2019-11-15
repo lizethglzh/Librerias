@@ -23,6 +23,7 @@ gem 'slim-rails'
 gem 'devise'
 gem 'bootstrap-sass', '3.4.1'
 gem 'paperclip', '~> 6.1'
+gem 'simple_form'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

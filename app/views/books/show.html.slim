@@ -16,7 +16,16 @@ p
   strong Price:
   = @book.price
 
+  p
 
-        => link_to 'Edit', edit_book_path(@book)
-        '|
-        =< link_to 'Back', books_path
+  strong Store:
+  - @book.books_stores.each do |book_store|
+    div 
+      = book_store.store.codename
+      = book_store.quantity
+
+  => link_to 'New Book', new_store_path(@store)
+
+  => link_to 'Edit', edit_book_path(@book)
+  '|
+  =< link_to 'Back', books_path

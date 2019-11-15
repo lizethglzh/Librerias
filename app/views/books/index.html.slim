@@ -11,7 +11,6 @@ table
       th Title
       th Author
       th Year
-      th Quantity
       th Price
       th
       th
@@ -21,12 +20,10 @@ table
     - @books.each do |book|
       tr
         p.text-center
-        td = book.title
+        td = link_to book.title, book_path(book)
         td = book.author
         td = book.year
-        td = book.quantity
         td = book.price
-        td = link_to 'Show', book
         td = link_to 'Edit', edit_book_path(book)
         td = link_to 'Destroy', book, data: { confirm: 'Are you sure?' }, method: :delete
 

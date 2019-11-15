@@ -1,23 +1,24 @@
 h1 Listing stores
 
+
 table
   thead
     tr
       th Codename
       th Address
       th Phone
-      th
+      th 
       th
       th
 
   tbody
     - @stores.each do |store|
       tr
-        td = store.codename
+        td = link_to store.codename, store_path(store)
         td = store.address
         td = store.phone
-        td = link_to 'Show', store
         td = link_to 'Edit', edit_store_path(store)
+        td = link_to 'Available stock', publisher_path(store) 
         td = link_to 'Destroy', store, data: { confirm: 'Are you sure?' }, method: :delete
 
 br

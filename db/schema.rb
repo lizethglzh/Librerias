@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_04_203409) do
+ActiveRecord::Schema.define(version: 2019_11_14_181849) do
+
+  create_table "book_stores", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "books", force: :cascade do |t|
     t.string "title"
@@ -21,6 +26,25 @@ ActiveRecord::Schema.define(version: 2019_11_04_203409) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.string "store"
+  end
+
+  create_table "books_stores", force: :cascade do |t|
+    t.integer "book_id"
+    t.integer "store_id"
+    t.integer "quantity"
+    t.index ["book_id", "store_id"], name: "index_books_stores_on_book_id_and_store_id"
+    t.index ["store_id", "book_id"], name: "index_books_stores_on_store_id_and_book_id"
+  end
+
+  create_table "publishers", force: :cascade do |t|
+    t.integer "quantity"
+    t.integer "book_id"
+    t.integer "store_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_publishers_on_book_id"
+    t.index ["store_id"], name: "index_publishers_on_store_id"
   end
 
   create_table "searches", force: :cascade do |t|
@@ -52,4 +76,6 @@ ActiveRecord::Schema.define(version: 2019_11_04_203409) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "publishers", "books"
+  add_foreign_key "publishers", "stores"
 end

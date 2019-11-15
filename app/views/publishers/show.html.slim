@@ -1,0 +1,10 @@
+table
+	thead
+		th Book
+		th Quantity
+	tbody
+		- @books_stores.each do |book_store|
+			tr
+				td = book_store.book.title
+				td = book_store.quantity
+=< link_to 'Back', stores_path

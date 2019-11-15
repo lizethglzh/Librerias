@@ -10,6 +10,13 @@ p
   strong Phone:
   = @store.phone
 
+    - @publishers.each do |publisher|
+      = link_to publisher, method: :delete do
+         = publisher.book.title
+         = publisher.book.author
+         = publisher.book.year
+         = publisher.book.quantity
+
 => link_to 'Edit', edit_store_path(@store)
 '|
 =< link_to 'Back', stores_path
